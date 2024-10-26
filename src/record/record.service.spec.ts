@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { EmotionRecordService } from './emotion-record.service';
+import { RecordService } from './record.service';
 
-describe('EmotionRecordService', () => {
-  let service: EmotionRecordService;
+describe('RecordService', () => {
+  let service: RecordService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EmotionRecordService],
+      providers: [RecordService],
     }).compile();
 
-    service = module.get<EmotionRecordService>(EmotionRecordService);
+    service = module.get<RecordService>(RecordService);
   });
 
   it('should be defined', () => {

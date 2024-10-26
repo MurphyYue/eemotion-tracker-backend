@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { EmotionRecordModule } from './emotion-record/emotion-record.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
+import { RecordModule } from './record/record.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    EmotionRecordModule,
     DatabaseModule,
+    RecordModule,
     // AuthModule,
   ],
-  // providers: [AuthService],
+  providers: [],
+  controllers: [],
 })
 export class AppModule {}

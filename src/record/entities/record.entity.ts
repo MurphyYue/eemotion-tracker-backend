@@ -1,23 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'; 
 
 @Entity()
-export class EmotionRecord {
+export class Record {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  createDate: string;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createTimestamp: Date;
 
-  @Column()
-  createTime: string;
-
-  @Column()
+  @Column({ nullable: true })
   userId: string;
 
-  @Column()
+  @Column({ nullable: true })
   userName: string;
 
-  @Column()
+  @Column({ nullable: true })
   mode: number; // 1 for mood, 2 for other mode
 
   // Mode 1 fields
@@ -42,4 +39,8 @@ export class EmotionRecord {
 
   @Column({ nullable: true })
   text: string;
+
+  constructor(record: Partial<Record>) {
+    Object.assign(this, record);
+  }
 }
