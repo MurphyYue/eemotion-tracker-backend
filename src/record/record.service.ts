@@ -14,7 +14,6 @@ export class RecordService {
   ) {}
 
   async create(createRecordDto: CreateRecordDto) {
-    console.log(createRecordDto);
     const record = new Record(createRecordDto);
     await this.entityManager.save(record);
   }
