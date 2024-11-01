@@ -1,10 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'; 
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm'; 
 
 @Entity()
 export class Record {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Index()
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createTimestamp: Date;
 

@@ -19,7 +19,11 @@ export class RecordService {
   }
 
   async findAll() {
-    return await this.recordRepository.find();
+    return this.recordRepository.find({
+      order: {
+        createTimestamp: 'DESC'
+      }
+    });
   }
 
   async findOne(id: number) {
