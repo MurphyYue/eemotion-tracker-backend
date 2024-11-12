@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
-import { AuthService } from './auth/auth.service';
 
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { RecordModule } from './record/record.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,6 +12,7 @@ import { RecordModule } from './record/record.module';
     }),
     DatabaseModule,
     RecordModule,
+    UserModule,
     // AuthModule,
   ],
   providers: [],

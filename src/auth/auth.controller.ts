@@ -1,20 +1,24 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
-import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
+import { Request, Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
-  constructor() {}
-
   @Get('google')
   @UseGuards(AuthGuard('google'))
-  async googleAuth(@Req() req) {}
+  async googleAuth() {
+    // Starts Google OAuth2 login flow
+  }
 
-  @Get('google/callback')
+  @Get('google/redirect')
   @UseGuards(AuthGuard('google'))
-  googleAuthRedirect(@Req() req, @Res() res: Response) {
-    // Successful authentication, redirect home or send user data
-    res.redirect('/');
+  googleAuthRedirect(
+    @Req() req: Request & { user: any },
+    @Res() res: Response,
+  ) {
+    const user = req.user;
+    // Redirect or respond after successful authentication
+    // Send user data to the frontend (Chrome extension)
+    res.redirect(`chrome-extension://your-extension-id?user=${JSON.stringify(user)}`);
   }
 }
-
