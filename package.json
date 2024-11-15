@@ -27,6 +27,7 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
+    "class-validator": "^0.14.1",
     "express-session": "^1.18.1",
     "google-auth-library": "^9.14.2",
     "mysql2": "^3.11.3",
